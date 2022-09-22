@@ -4,13 +4,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/auth.context";
+import { NoteProvider } from "./context/note.context";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <NoteProvider>
+        <App />
+      </NoteProvider>
     </UserProvider>
   </BrowserRouter>
 );

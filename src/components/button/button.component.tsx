@@ -1,16 +1,16 @@
-import {ButtonContainer} from './button.styles'
+import { ButtonContainer } from "./button.styles";
 
-interface IButton{
-  onClickHandler:(e:Event) => void,
-  label:string
+interface IButton {
+  onClickHandler: (text: string) => void;
+  label: string;
 }
 
-const Button = ({label,onClickHandler,...otherProps}:IButton) => {
+const Button = ({ label, onClickHandler, ...otherProps }: IButton) => {
   return (
     <ButtonContainer {...otherProps} onClick={onClickHandler}>
       {label}
     </ButtonContainer>
-  )
-}
+  );
+};
 
 export default Button;

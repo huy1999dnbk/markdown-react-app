@@ -3,11 +3,9 @@ import { UserContext } from "../../context/auth.context";
 import { SignInContainer, SignInTitle, WelcomeTitle } from "./sign-in.styles";
 import Button from "../button/button.component";
 import { signInWithGooglePopUp, createUser } from "../../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { User } from "../../context/auth.context";
 
 const SignIn = () => {
-  let navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
   const handleRedirect = async (user: User) => {
@@ -18,16 +16,11 @@ const SignIn = () => {
       photoURL,
       email,
     };
-    setUser(userData);
-
-    //save user to firestore
     await createUser(userData);
-
-    navigate("/home");
+    setUser(userData);
   };
 
-  const handleSignInWithGoogle = (e: Event) => {
-    e.preventDefault();
+  const handleSignInWithGoogle = () => {
     signInWithGooglePopUp(handleRedirect);
   };
 

@@ -11,9 +11,15 @@ function App() {
 
   useEffect(() => {
     if (userInfo.uid !== "") {
-      navigate("/home");
+      navigate("/home", {
+        replace: true,
+      });
+    } else {
+      navigate("/", {
+        replace: true,
+      });
     }
-  }, [userInfo]);
+  }, [userInfo.uid]);
 
   return (
     <Routes>

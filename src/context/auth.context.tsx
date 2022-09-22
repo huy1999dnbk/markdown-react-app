@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { checkUserAlreadySignedIn } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 export type User = {
   uid: string;
   displayName: string;
@@ -28,7 +27,6 @@ export const UserContext = createContext<IUserContextInterface>({
 });
 
 export const UserProvider = (props: any) => {
-  let navigate = useNavigate();
   const [userInfo, setUserInfo] = useState<User>(defaultUser);
   const setUser = (user: User) => {
     setUserInfo(user);
@@ -49,7 +47,6 @@ export const UserProvider = (props: any) => {
           email: user.email,
         });
       } else {
-        navigate("/");
         clearUser();
       }
     };
